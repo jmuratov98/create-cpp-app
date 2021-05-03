@@ -3,12 +3,12 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Build test",
+            "label": "Build cpp-proj",
             "windows": {
-                "command": "${workspaceFolder}/test/build.bat"
+                "command": "${workspaceFolder}/cpp-proj/build.bat"
             },
             "options": {
-                "cwd": "${workspaceFolder}/test"
+                "cwd": "${workspaceFolder}/cpp-proj"
             },
             "problemMatcher": ["$gcc"],
             "group": "build"

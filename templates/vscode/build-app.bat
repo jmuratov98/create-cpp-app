@@ -11,4 +11,4 @@ SET INCLUDE=-Iinclude
 SET LINKER=-luser32
 SET DEFINES=-D<%- prjname.toUpperCase() %>_DEBUG -D<%- prjname.toUpperCase() %>_EXPORT -D_CRT_SECURE_NO_WARNINGS
 
-g++ %FILES% %COMPILER% -o ../bin/%ASSEMBLY%.dll %DEFINES% %INCLUDE% %LINKER%
+<% if(lang == 'cpp') { %>g++<% } else { %>gcc<% } %> %FILES% %COMPILER% -o ../bin/%ASSEMBLY%.dll %DEFINES% %INCLUDE% %LINKER%

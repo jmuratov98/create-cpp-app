@@ -4,11 +4,11 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/test/include/**"
+                "${workspaceFolder}/cpp-proj/include/**"
             ],
             "defines": [
-                "TEST_DEBUG",
-                "TEST_EXPORT"
+                "CPP-PROJ_DEBUG",
+                "CPP-PROJ_EXPORT"
             ],
             "cStandard": "c17",
             "cppStandard": "c++17",

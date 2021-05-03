@@ -7,8 +7,8 @@ FOR /R %%f in (*cpp) DO (
 
 SET ASSEMBLY=sandbox
 SET COMPILER=-g -Wvarargs -Wall -Werror
-SET INCLUDE=-Iinclude -I../test/include
-SET LINKER=-luser32 -ltest -L../test.lib
-SET DEFINES=-DTEST_DEBUG -D_CRT_SECURE_NO_WARNINGS
+SET INCLUDE=-Iinclude -I../c-proj/include
+SET LINKER=-luser32 -lc-proj -L../bin/
+SET DEFINES=-DC-PROJ_DEBUG -D_CRT_SECURE_NO_WARNINGS
 
 gcc %FILES% %COMPILER% -o ../bin/%ASSEMBLY%.exe %DEFINES% %INCLUDE% %LINKER%

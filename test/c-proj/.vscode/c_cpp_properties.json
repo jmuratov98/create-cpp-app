@@ -1,0 +1,18 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/c-proj/include/**"
+            ],
+            "defines": [
+                "C-PROJ_DEBUG",
+                "C-PROJ_EXPORT"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ]
+}

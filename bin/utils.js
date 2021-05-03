@@ -7,7 +7,7 @@ function mkdir (base, dir) {
     const loc = path.join(base, dir);
 
     console.log('   \x1b[36mcreate\x1b[0m : ' + loc + path.sep)
-    fs.mkdirSync(loc);
+    fs.mkdirSync(loc, { recursive: true });
 }
 
 function createFolderStructureRec(struct, root = ['.']) {
@@ -37,8 +37,8 @@ module.exports = {
         return { render }
     },
 
-    createFolderStructure: function(structure) {
-        createFolderStructureRec(structure);
+    createFolderStructure: function(structure, dir) {
+        createFolderStructureRec(structure, dir);
     },
 
     mkdir
