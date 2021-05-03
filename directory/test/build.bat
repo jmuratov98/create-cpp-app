@@ -1,6 +1,6 @@
 @ECHO OFF
 
-PUSHD cannon
+PUSHD test
 ECHO "============ Building test ============"
 CALL build.bat
 POPD

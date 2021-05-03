@@ -11,12 +11,12 @@ function createAndLoadTemplate(templateName, fileName, dest, locals = {}) {
     write( dest, file.render(locals) );
 }
 
-function createAppStructure(name) {
+function createAppStructure(name, dir = '.') {
     const FOLDER_STRUCTURE = require('./folder-structure')(name);
-    createFolderStructure(FOLDER_STRUCTURE);
+    createFolderStructure(FOLDER_STRUCTURE, [dir]);
    
-    const PRJ_INCLUDE_DIR = path.join(name, name, 'include');
-    const VSCODE_DIR = path.join(name, '.vscode');
+    const PRJ_INCLUDE_DIR = path.join(dir, name, name, 'include');
+    const VSCODE_DIR = path.join(dir, name, '.vscode');
     [
         { template: 'cpp', fileName: 'common.h', filepath: path.join(PRJ_INCLUDE_DIR, name, 'common.h'), locals: { prjname: name } },
         { template: 'cpp', fileName: 'defines.h', filepath: path.join(PRJ_INCLUDE_DIR, name, 'defines.h'), locals: { lang: 'cpp' } },
@@ -28,9 +28,9 @@ function createAppStructure(name) {
         { template: 'vscode', fileName: 'launch.json', filepath: path.join(VSCODE_DIR, 'launch.json'), locals: {} },
         { template: 'vscode', fileName: 'tasks.json', filepath: path.join(VSCODE_DIR, 'tasks.json'), locals: { prjname: name } },
 
-        { template: 'vscode', fileName: 'build-all.bat', filepath: path.join(name, 'build.bat'), locals: { prjname: name } },
-        { template: 'vscode', fileName: 'build-app.bat', filepath: path.join(name, name, 'build.bat'), locals: { prjname: name } },
-        { template: 'vscode', fileName: 'build-sandbox.bat', filepath: path.join(name, 'sandbox', 'build.bat'), locals: { prjname: name } }
+        { template: 'vscode', fileName: 'build-all.bat', filepath: path.join(dir, name, 'build.bat'), locals: { prjname: name } },
+        { template: 'vscode', fileName: 'build-app.bat', filepath: path.join(dir, name, name, 'build.bat'), locals: { prjname: name } },
+        { template: 'vscode', fileName: 'build-sandbox.bat', filepath: path.join(dir, name, 'sandbox', 'build.bat'), locals: { prjname: name } }
     ].forEach(({ template, fileName, filepath, locals }) => {
         createAndLoadTemplate( template, fileName, filepath, locals );
     });
@@ -48,7 +48,7 @@ function parse(opts) {
     }
 
     if(isDirEmpty(opts.name)) {
-        createAppStructure(opts.name)
+        createAppStructure(opts.name, opts.dir);
     } else {
          // TODO: Later
     }
@@ -62,6 +62,7 @@ function main(argv) {
         .option('-g, --git', 'creates a git repository (TODO)')
         .option('-l, --lang <lang>', 'c or c++ (defaults to c++) TODO)')
         .option('-n, --name <name>', 'name of your project')
+        .option('-d, --dir [directory]', 'directory where the project will be placed')
         .parse(argv);
 
     parse(program.opts());
