@@ -1,6 +1,6 @@
 @ECHO OFF
 
-PUSHD cannon
+PUSHD <%- prjname %>
 ECHO "============ Building <%- prjname %> ============"
 CALL build.bat
 POPD
