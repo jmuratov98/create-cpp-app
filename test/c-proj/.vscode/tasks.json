@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build c-proj",
+            "windows": {
+                "command": "${workspaceFolder}/c-proj/build.bat"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/c-proj"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Build Sandbox",
+            "windows": {
+                "command": "${workspaceFolder}/sandbox/build.bat"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/sandbox"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Build Everything",
+            "windows": {
+                "command": "${workspaceFolder}/build.bat"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
